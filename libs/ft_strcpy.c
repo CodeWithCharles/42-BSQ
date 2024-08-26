@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_error.c                                   :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 23:21:53 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 23:21:53 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 01:16:44 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 01:16:44 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lib.h"
-
-void	ft_print_error(char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
-	write(2, str, ft_strlen(str));
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

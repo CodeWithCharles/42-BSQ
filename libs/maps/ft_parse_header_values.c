@@ -16,6 +16,8 @@ int	*ft_parse_header_values(char *infos, int len)
 {
 	int	*result;
 
+	if (!(ft_validate_header(infos)))
+		return (NULL);
 	result = malloc(4 * sizeof(int));
 	if (!result)
 		return (NULL);
@@ -24,4 +26,5 @@ int	*ft_parse_header_values(char *infos, int len)
 	result[3] = (int)infos[len - 1];
 	infos[len - 3] = '\0';
 	result[0] = atoi(infos);
+	return (result);
 }

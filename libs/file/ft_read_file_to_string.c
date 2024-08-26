@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_validate_header.c                               :+:      :+:    :+:   */
+/*   ft_read_file_to_string.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 21:53:18 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 22:13:04 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 00:54:53 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 00:54:53 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib.h"
 
-int	ft_validate_header(char *infos)
+char	*read_file_to_string(const char *filename)
 {
-	int	len;
-	int	i;
+	int		fd;
+	char	*content;
+	size_t	total_size;
 
-	len = ft_strlen(infos);
-	if (len < 4)
-		return (0);
-	i = -1;
-	while (++i < len)
-		if (!(infos[i] >= ' ' && infos[i] <= '~')
-			|| (i < len - 3 && !(infos[i] >= '0' && infos[i] <= '9')))
-			return (0);
-	if (infos[len - 3] == infos[len - 2]
-		|| infos[len - 3] == infos[len - 1] || infos[len - 2] == infos[len - 1])
-		return (0);
-	return (1);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	content = malloc(BUFFER_SIZE + 1);
+	if (!content)
+	{
+		close(fd);
+		return (NULL);
+	}
+	total_size = 0;
+	content[0] = '\0';
+	content = read_content(fd, content, &total_size);
+	if (!content)
+	{
+		close(fd);
+		return (NULL);
+	}
+	content[total_size] = '\0';
+	close(fd);
+	return (content);
 }

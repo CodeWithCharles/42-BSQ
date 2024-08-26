@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_has_duplicates.c                                :+:      :+:    :+:   */
+/*   ft_expand_buffer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 21:56:27 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 21:56:27 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 00:50:18 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 00:50:18 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lib.h"
+#include "../../includes/lib.h"
 
-int	ft_has_duplicates(char *str)
+char	*expand_buffer(char *content, size_t *total_size)
 {
-	int	i;
-	int	j;
+	size_t	new_size;
+	char	*new_content;
 
-	i = 0;
-	while (str[i] != '\0')
+	new_size = *total_size + BUFFER_SIZE;
+	new_content = malloc(new_size + 1);
+	if (!new_content)
 	{
-		j = i + 1;
-		while (str[j] != '\0')
-		{
-			if (str[i] == str[j])
-			{
-				return (1);
-			}
-			j++;
-		}
-		i++;
+		free(content);
+		return (NULL);
 	}
-	return (0);
+	ft_strcpy(new_content, content);
+	free(content);
+	*total_size = new_size;
+	return (new_content);
 }

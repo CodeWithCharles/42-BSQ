@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_error.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 23:21:53 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 23:21:53 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 00:58:59 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 00:58:59 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lib.h"
+#include "../includes/lib.h"
 
-void	ft_print_error(char *str)
+char	*ft_strdup(char *src, int from_idx, int to_idx)
 {
-	write(2, str, ft_strlen(str));
+	char	*dest;
+	int		i;
+
+	i = 0;
+	dest = malloc((to_idx - from_idx + 1) * sizeof(char *));
+	while (i < to_idx - from_idx)
+	{
+		dest[i] = src[i + from_idx];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

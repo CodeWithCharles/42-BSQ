@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_error.c                                   :+:      :+:    :+:   */
+/*   ft_big_strlen.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 23:21:53 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 23:21:53 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 01:10:38 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 01:10:38 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lib.h"
+#include "../includes/lib.h"
 
-void	ft_print_error(char *str)
+size_t	ft_big_strlen(char *str)
 {
-	write(2, str, ft_strlen(str));
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
