@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../includes/lib.h"
 
 int	ft_has_duplicates(char *str)
 {

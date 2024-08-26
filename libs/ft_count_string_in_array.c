@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../includes/lib.h"
 
 int	ft_count_string_in_array(char **arr)
 {

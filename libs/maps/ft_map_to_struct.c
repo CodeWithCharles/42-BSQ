@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../../includes/lib.h"
 
 t_map	*ft_map_to_struct(char **map_input, t_map *map_data)
 {

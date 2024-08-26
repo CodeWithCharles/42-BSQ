@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../includes/lib.h"
 
 int	ft_char_is_space(char c)
 {

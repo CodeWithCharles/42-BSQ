@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../../includes/lib.h"
 
 int	*ft_parse_header_values(char *infos, int len)
 {

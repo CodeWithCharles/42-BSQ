@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../../includes/lib.h"
 
 int	ft_print_error(char *str)
 {

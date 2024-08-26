@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../../includes/lib.h"
 
 int	ft_validate_row(char *row, int length, char empty, char obs)
 {
