@@ -6,16 +6,16 @@
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 18:39:39 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 22:13:08 by cpoulain         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:25:40 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lib.h"
 
-t_map	*ft_map_to_struct(char **map_input, t_map *map_data)
+t_map	*ft_map_to_struct(char **map_input)
 {
-	int				*infos;
-	unsigned int	i;
+	int		*infos;
+	t_map	*map_data;
 
 	infos = ft_parse_header_values(map_input[0], ft_strlen(map_input[0]));
 	map_data = malloc(sizeof(struct s_map));
@@ -27,8 +27,16 @@ t_map	*ft_map_to_struct(char **map_input, t_map *map_data)
 	map_data->nbr_line = infos[0];
 	map_data->nbr_column = ft_strlen(map_input[1]);
 	free(infos);
-	i = 1;
-	while (i < map_data->nbr_column)
-		map_data->map[i - 1] = map_input[i];
+	map_data->current_line = 0;
+	map_data->map = malloc(sizeof(char *) * map_data->nbr_line);
+	while (map_data->current_line < map_data->nbr_line)
+	{
+		if (!ft_validate_row(map_input[map_data->current_line + 1], map_data))
+		{
+			free(map_data);
+			return (NULL);
+		}
+		map_data->current_line++;
+	}
 	return (map_data);
 }

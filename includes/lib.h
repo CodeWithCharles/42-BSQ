@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:23:19 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/26 18:46:44 by cpoulain         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:51:59 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	8192
@@ -30,7 +31,11 @@ typedef struct s_map
 	char			obs;
 	unsigned int	nbr_line;
 	unsigned int	nbr_column;
+	unsigned int	current_line;
 }	t_map;
+
+// Utils functions
+void	ft_print_error(char *str);
 
 // Regular functions
 int		ft_atoi(char *str);
@@ -45,8 +50,8 @@ char	*ft_strcpy(char *dest, char *src);
 // Map functions
 int		*ft_parse_header_values(char *infos, int len);
 int		ft_validate_header(char *infos);
-t_map	*ft_map_to_struct(char **map_input, t_map *map_data);
-int		ft_validate_row(char *row, int length, char empty, char obs);
+t_map	*ft_map_to_struct(char **map_input);
+int		ft_validate_row(char *row, t_map *map_data);
 // File functions
 char	*expand_buffer(char *content, size_t *total_size);
 char	*read_content(int fd, char *content, size_t *total_size);
