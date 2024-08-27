@@ -12,7 +12,7 @@
 
 #include "../../includes/lib.h"
 
-char	*read_content(int fd, char *content, size_t *total_size)
+char	*ft_read_content(int fd, char *content, size_t *total_size)
 {
 	ssize_t	bytes_read;
 	size_t	current_buffer_size;
@@ -31,7 +31,7 @@ char	*read_content(int fd, char *content, size_t *total_size)
 		*total_size += (size_t)bytes_read;
 		if (*total_size >= current_buffer_size)
 		{
-			content = expand_buffer(content, total_size);
+			content = ft_expand_buffer(content, total_size);
 			if (!content)
 				return (NULL);
 			current_buffer_size += BUFFER_SIZE;

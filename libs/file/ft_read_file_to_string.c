@@ -12,7 +12,7 @@
 
 #include "../../includes/lib.h"
 
-char	*read_file_to_string(const char *filename)
+char	*ft_read_file_to_string(const char *filename)
 {
 	int		fd;
 	char	*content;
@@ -29,7 +29,7 @@ char	*read_file_to_string(const char *filename)
 	}
 	total_size = 0;
 	content[0] = '\0';
-	content = read_content(fd, content, &total_size);
+	content = ft_read_content(fd, content, &total_size);
 	if (!content)
 	{
 		close(fd);

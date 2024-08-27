@@ -25,19 +25,20 @@
 typedef struct s_map
 {
 	char			**map;
-	int				**solutions;
 	char			empty;
 	char			filler;
 	char			obs;
 	unsigned int	nbr_line;
 	unsigned int	nbr_column;
 	unsigned int	current_line;
+	unsigned int	sol_y;
+	unsigned int	sol_x;
+	unsigned int	sol_area;
 }	t_map;
 
 // Struct functions
 void	ft_struct_free(t_map *map_data);
 void	ft_struct_free_map(t_map *map_data);
-void	ft_struct_free_solutions(t_map *map_data);
 
 // Utils functions
 void	ft_print_error(char *str);
@@ -60,8 +61,10 @@ int		ft_validate_header(char *infos);
 t_map	*ft_map_to_struct(char **map_input);
 int		ft_validate_row(char *row, t_map *map_data);
 // File functions
-char	*expand_buffer(char *content, size_t *total_size);
-char	*read_content(int fd, char *content, size_t *total_size);
-char	*read_file_to_string(const char *filename);
+char	*ft_expand_buffer(char *content, size_t *total_size);
+char	*ft_read_content(int fd, char *content, size_t *total_size);
+char	*ft_read_file_to_string(const char *filename);
+//Solver functions
+int		init_solving(char *file);
 
 #endif

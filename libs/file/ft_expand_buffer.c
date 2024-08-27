@@ -12,7 +12,7 @@
 
 #include "../../includes/lib.h"
 
-char	*expand_buffer(char *content, size_t *total_size)
+char	*ft_expand_buffer(char *content, size_t *total_size)
 {
 	size_t	new_size;
 	char	*new_content;

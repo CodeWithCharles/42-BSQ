@@ -18,8 +18,6 @@ void	ft_struct_free(t_map *map_data)
 	{
 		if (map_data->map != NULL)
 			ft_struct_free_map(map_data);
-		if (map_data->solutions != NULL)
-			ft_struct_free_solutions(map_data);
 		free(map_data);
 	}
 }
