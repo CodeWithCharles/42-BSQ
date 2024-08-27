@@ -25,7 +25,7 @@
 typedef struct s_map
 {
 	char			**map;
-	unsigned short	**solutions;
+	unsigned short	**sols;
 	char			empty;
 	char			filler;
 	char			obs;
@@ -59,7 +59,7 @@ int				ft_count_string_in_array(char **arr);
 char			*ft_strdup(char *src, int from_idx, int to_idx);
 char			**ft_split(char *str, char *charset);
 char			*ft_strcpy(char *dest, char *src);
-unsigned int	ft_min_unsigned_int(unsigned int a, unsigned int b);
+unsigned int	ft_min_uint(unsigned int a, unsigned int b);
 
 // Map functions
 int				*ft_parse_header_values(char *infos, int len);
@@ -72,6 +72,10 @@ char			*ft_read_content(int fd, char *content, size_t *total_size);
 char			*ft_read_file_to_string(const char *filename);
 //Solver functions
 void			ft_init_solving(char *file);
-void			ft_solve(t_map *map_data);
+void			ft_retrieve_areas(t_map *map_data);
+void			ft_display_sols_matrix(t_map *m_dat);
+void			ft_solve(t_map *m_dat);
+void			ft_convert_map_chars(t_map *m_dat);
+void			ft_display_solved_map(t_map *m_dat);
 
 #endif

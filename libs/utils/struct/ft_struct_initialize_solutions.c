@@ -14,18 +14,18 @@
 
 t_map	*ft_struct_initialize_solutions(t_map *map_data)
 {
-	int	i;
+	unsigned int	i;
 
-	map_data->solutions = malloc(sizeof(int *) * map_data->nbr_line);
-	if (!map_data->solutions)
+	map_data->sols = malloc(sizeof(int *) * map_data->nbr_line);
+	if (!map_data->sols)
 		ft_print_error("Error: allocating memory to solutions\n");
 	else
 	{
 		i = 0;
 		while (i < map_data->nbr_column)
 		{
-			map_data->solutions[i] = malloc(sizeof(int) * map_data->nbr_column);
-			if (!map_data->solutions[i])
+			map_data->sols[i] = malloc(sizeof(int) * map_data->nbr_column);
+			if (!map_data->sols[i])
 			{
 				ft_print_error("Error: allocating memory to solutions rows.\n");
 				ft_struct_free(map_data);

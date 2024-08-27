@@ -17,7 +17,7 @@ void	ft_struct_free_solutions(t_map *map_data)
 	int	i;
 
 	i = -1;
-	while (map_data->solutions[++i])
-		free(map_data->solutions[i]);
-	free(map_data->solutions);
+	while (map_data->sols[++i])
+		free(map_data->sols[i]);
+	free(map_data->sols);
 }
