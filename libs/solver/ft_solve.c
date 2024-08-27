@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_struct_free.c                                   :+:      :+:    :+:   */
+/*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 17:16:04 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:32:32 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 19:25:40 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 19:25:40 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/lib.h"
+#include "../../includes/lib.h"
 
-void	ft_struct_free(t_map *map_data)
+void	ft_solve(t_map *map_data)
 {
-	if (map_data)
-	{
-		if (map_data->map)
-			ft_struct_free_map(map_data);
-		if (map_data->solutions)
-			ft_struct_free_solutions(map_data);
-		free(map_data);
-	}
+	
 }

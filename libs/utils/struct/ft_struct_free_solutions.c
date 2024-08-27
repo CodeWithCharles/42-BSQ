@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_solving.c                                     :+:      :+:    :+:   */
+/*   ft_struct_free_solutions.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 18:21:56 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 18:21:56 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 17:06:30 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 20:22:35 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lib.h"
+#include "../../../includes/lib.h"
 
-void	init_solving(char *file)
+void	ft_struct_free_solutions(t_map *map_data)
 {
-	t_map	*map_data;
-	char	*file_content;
+	int	i;
 
-	file_content = ft_read_file_to_string(file);
-	if (!file_content)
-		ft_print_error("Error: error while reading file.");
-	else
-	{
-		
-	}
+	i = -1;
+	while (map_data->solutions[++i])
+		free(map_data->solutions[i]);
+	free(map_data->solutions);
 }

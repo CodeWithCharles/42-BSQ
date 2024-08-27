@@ -22,16 +22,15 @@ char	*ft_read_file_to_string(const char *filename)
 	if (fd < 0)
 		return (NULL);
 	content = malloc(BUFFER_SIZE + 1);
-	if (!content)
+	if (content)
 	{
-		close(fd);
-		return (NULL);
+		total_size = 0;
+		content[0] = '\0';
+		content = ft_read_content(fd, content, &total_size);
 	}
-	total_size = 0;
-	content[0] = '\0';
-	content = ft_read_content(fd, content, &total_size);
 	if (!content)
 	{
+		ft_print_error("Error: reading file into string.\n");
 		close(fd);
 		return (NULL);
 	}
