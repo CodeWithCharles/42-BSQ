@@ -33,4 +33,5 @@ void	ft_init_solving(char *file)
 			}
 		}
 	}
+	ft_struct_free(map_data);
 }

@@ -12,7 +12,7 @@
 
 #include "../../../includes/lib.h"
 
-t_map	*ft_struct_initialize(int *infos)
+t_map	*ft_struct_initialize(int *infos, int col_len)
 {
 	t_map	*map_data;
 
@@ -20,14 +20,16 @@ t_map	*ft_struct_initialize(int *infos)
 		return (NULL);
 	map_data = malloc(sizeof(t_map));
 	if (!map_data)
-		ft_print_error("Error: allocating memory to map_data.\n");
-	else
 	{
-		map_data->filler = infos[3] + '0';
-		map_data->obs = infos[2] + '0';
-		map_data->empty = infos[1] + '0';
-		map_data->nbr_line = infos[0];
-		map_data->current_line = 0;
+		ft_print_error("Error: allocating memory to map_data.\n");
+		return (NULL);
 	}
+	map_data->filler = infos[3] + '0';
+	map_data->obs = infos[2] + '0';
+	map_data->empty = infos[1] + '0';
+	map_data->nbr_line = infos[0];
+	map_data->current_line = 0;
+	map_data->nbr_column = col_len;
+	map_data->map = malloc(sizeof(char *) * (map_data->nbr_line + 1));
 	return (map_data);
 }

@@ -14,11 +14,6 @@
 
 void	ft_free_2d_char_array(char **arr)
 {
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
 	free(arr);
 }
 
@@ -28,6 +23,9 @@ void	ft_free_2d_int_array(int **arr)
 
 	i = 0;
 	while (arr[i])
-		free(arr[i++]);
+	{
+		free(arr[i]);
+		i++;
+	}
 	free(arr);
 }

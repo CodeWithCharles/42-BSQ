@@ -38,7 +38,7 @@ typedef struct s_map
 }	t_map;
 
 // Struct functions
-t_map			*ft_struct_initialize(int *infos);
+t_map			*ft_struct_initialize(int *infos, int col_len);
 void			ft_struct_free(t_map *map_data);
 void			ft_struct_free_map(t_map *map_data);
 void			ft_struct_free_solutions(t_map *map_data);

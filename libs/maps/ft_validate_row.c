@@ -31,6 +31,7 @@ int	ft_validate_row(char *row, t_map *map_datas)
 		ft_print_error("Map error : Invalid row length.\n");
 		return (0);
 	}
-	map_datas->map[map_datas->current_line] = row;
+	map_datas->map[map_datas->current_line] = ft_strdup(row, 0, ft_strlen(row));
+	free(row);
 	return (1);
 }

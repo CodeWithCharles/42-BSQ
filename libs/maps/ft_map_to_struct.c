@@ -18,15 +18,13 @@ t_map	*ft_map_to_struct(char **map_input)
 	t_map	*map_data;
 
 	infos = ft_parse_header_values(map_input[0], ft_strlen(map_input[0]));
-	map_data = ft_struct_initialize(infos);
+	map_data = ft_struct_initialize(infos, ft_strlen(map_input[1]));
 	free(infos);
 	if (!map_data)
 	{
 		ft_print_error("Error: intializing t_map structure.\n");
 		return (NULL);
 	}
-	map_data->nbr_column = ft_strlen(map_input[1]);
-	map_data->map = malloc(sizeof(char *) * map_data->nbr_line);
 	while (map_data->current_line < map_data->nbr_line)
 	{
 		if (!ft_validate_row(map_input[map_data->current_line + 1], map_data))
@@ -37,6 +35,8 @@ t_map	*ft_map_to_struct(char **map_input)
 		}
 		map_data->current_line++;
 	}
+	map_data->map[map_data->current_line] = NULL;
 	map_data->current_line = 0;
+	ft_free_2d_char_array(map_input);
 	return (map_data);
 }
