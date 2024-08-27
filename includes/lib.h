@@ -6,7 +6,7 @@
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:23:19 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 15:51:59 by cpoulain         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:26:14 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,15 @@ typedef struct s_map
 	unsigned int	current_line;
 }	t_map;
 
+// Struct functions
+void	ft_struct_free(t_map *map_data);
+void	ft_struct_free_map(t_map *map_data);
+void	ft_struct_free_solutions(t_map *map_data);
+
 // Utils functions
 void	ft_print_error(char *str);
+void	ft_free_2d_char_array(char **arr);
+void	ft_free_2d_int_array(int **arr);
 
 // Regular functions
 int		ft_atoi(char *str);

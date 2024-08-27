@@ -6,7 +6,7 @@
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 18:39:39 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 15:25:40 by cpoulain         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:33:54 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_map	*ft_map_to_struct(char **map_input)
 	{
 		if (!ft_validate_row(map_input[map_data->current_line + 1], map_data))
 		{
-			free(map_data);
+			ft_struct_free(map_data);
 			return (NULL);
 		}
 		map_data->current_line++;
