@@ -17,21 +17,25 @@ int	ft_validate_row(char *row, t_map *map_datas)
 	unsigned int	i;
 
 	i = 0;
+	if (!row)
+	{
+		ft_print_error("map error\n");
+		return (0);
+	}
 	while (row[i] != '\n' && row[i])
 	{
 		if (row[i] != map_datas->empty && row[i] != map_datas->obs)
 		{
-			ft_print_error("Map error : Invalid character in row.\n");
+			ft_print_error("map error\n");
 			return (0);
 		}
 		i++;
 	}
 	if (i != map_datas->nbr_column)
 	{
-		ft_print_error("Map error : Invalid row length.\n");
+		ft_print_error("map error\n");
 		return (0);
 	}
 	map_datas->map[map_datas->current_line] = ft_strdup(row, 0, ft_strlen(row));
-	free(row);
 	return (1);
 }

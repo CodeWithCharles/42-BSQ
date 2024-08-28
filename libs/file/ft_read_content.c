@@ -12,15 +12,13 @@
 
 #include "../../includes/lib.h"
 
-char	*ft_read_content(int fd, char *content, size_t *total_size)
+char	*ft_read_content(int fd, char *content, size_t *r_size, size_t *c_size)
 {
 	ssize_t	bytes_read;
-	size_t	current_buffer_size;
 
-	current_buffer_size = BUFFER_SIZE;
 	while (1)
 	{
-		bytes_read = read(fd, content + *total_size, current_buffer_size);
+		bytes_read = read(fd, content + *r_size, *c_size - *r_size);
 		if (bytes_read < 0)
 		{
 			free(content);
@@ -28,13 +26,12 @@ char	*ft_read_content(int fd, char *content, size_t *total_size)
 		}
 		if (bytes_read == 0)
 			break ;
-		*total_size += (size_t)bytes_read;
-		if (*total_size >= current_buffer_size)
+		*r_size += (size_t)bytes_read;
+		if (*r_size >= *c_size)
 		{
-			content = ft_expand_buffer(content, total_size);
+			content = ft_expand_buffer(content, c_size);
 			if (!content)
 				return (NULL);
-			current_buffer_size += BUFFER_SIZE;
 		}
 	}
 	return (content);

@@ -23,16 +23,14 @@ int	ft_is_char_separator(char *sep, char c)
 	return (0);
 }
 
-char	**ft_split(char *str, char *charset)
+int	ft_split(char **dest, char *str, char *charset)
 {
 	int		i;
-	char	**dest;
 	int		start_sub_str;
 	int		curr_arr_idx;
 
 	i = 0;
 	curr_arr_idx = 0;
-	dest = malloc((ft_strlen(str) + 1) * sizeof(char *));
 	while (str[i])
 	{
 		while (str[i] && ft_is_char_separator(charset, str[i]))
@@ -44,5 +42,5 @@ char	**ft_split(char *str, char *charset)
 			dest[curr_arr_idx++] = ft_strdup(str, start_sub_str, i);
 	}
 	dest[curr_arr_idx] = NULL;
-	return (dest);
+	return (curr_arr_idx);
 }

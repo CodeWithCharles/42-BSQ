@@ -12,12 +12,12 @@
 
 #include "../../includes/lib.h"
 
-char	*ft_expand_buffer(char *content, size_t *total_size)
+char	*ft_expand_buffer(char *content, size_t *allocated_size)
 {
 	size_t	new_size;
 	char	*new_content;
 
-	new_size = *total_size + BUFFER_SIZE;
+	new_size = *allocated_size + BUFFER_SIZE;
 	new_content = malloc(new_size + 1);
 	if (!new_content)
 	{
@@ -26,6 +26,6 @@ char	*ft_expand_buffer(char *content, size_t *total_size)
 	}
 	ft_strcpy(new_content, content);
 	free(content);
-	*total_size = new_size;
+	*allocated_size = new_size;
 	return (new_content);
 }

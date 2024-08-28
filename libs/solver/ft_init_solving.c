@@ -12,26 +12,28 @@
 
 #include "../../includes/lib.h"
 
-void	ft_init_solving(char *file)
+void	ft_init_solving(char *file, t_map *map_data)
 {
-	t_map	*map_data;
 	char	*file_content;
+	int		res;
+	char	**map;
+	int		nbr_line;
 
-	file_content = ft_read_file_to_string(file);
-	if (!file_content)
-		ft_print_error("Error: error while reading file.\n");
-	else
+	res = 0;
+	file_content = ft_read_file_to_string(file, 0);
+	if (file_content)
 	{
-		map_data = ft_map_to_struct(ft_split(file_content, "\n"));
+		map = malloc((ft_strlen(file_content) + 1) * sizeof(char *));
+		nbr_line = ft_split(map, file_content, "\n");
+		res = ft_map_to_struct(map, map_data, nbr_line);
 		free(file_content);
-		if (map_data)
+		if (res)
 		{
-			ft_struct_initialize_solutions(map_data);
-			if (map_data)
-			{
+			res = ft_struct_initialize_solutions(map_data);
+			if (res)
 				ft_solve(map_data);
-			}
 		}
 	}
-	ft_struct_free(map_data);
+	if (res)
+		ft_struct_free(map_data);
 }

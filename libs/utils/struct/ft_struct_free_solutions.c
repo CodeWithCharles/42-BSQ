@@ -14,10 +14,10 @@
 
 void	ft_struct_free_solutions(t_map *map_data)
 {
-	int	i;
+	unsigned int	i;
 
-	i = -1;
-	while (map_data->sols[++i])
-		free(map_data->sols[i]);
+	i = 0;
+	while (i < map_data->nbr_line)
+		free(map_data->sols[i++]);
 	free(map_data->sols);
 }

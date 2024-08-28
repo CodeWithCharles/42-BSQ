@@ -12,31 +12,31 @@
 
 #include "../../includes/lib.h"
 
-t_map	*ft_map_to_struct(char **map_input)
+int	ft_map_to_struct(char **m_in, t_map *m_dat, int nbr_line)
 {
-	int		*infos;
-	t_map	*map_data;
+	int	*infos;
+	int	res;
 
-	infos = ft_parse_header_values(map_input[0], ft_strlen(map_input[0]));
-	map_data = ft_struct_initialize(infos, ft_strlen(map_input[1]));
+	infos = ft_parse_header_values(m_in);
+	if (!infos)
+	{
+		ft_free_2d_char_array(m_in, nbr_line);
+		return (0);
+	}
+	res = ft_struct_initialize(infos, ft_strlen(m_in[1]), m_dat);
+	if (!res)
+		return (0);
 	free(infos);
-	if (!map_data)
+	while (m_dat->current_line < m_dat->nbr_line)
 	{
-		ft_print_error("Error: intializing t_map structure.\n");
-		return (NULL);
-	}
-	while (map_data->current_line < map_data->nbr_line)
-	{
-		if (!ft_validate_row(map_input[map_data->current_line + 1], map_data))
+		if (!ft_validate_row(m_in[m_dat->current_line + 1], m_dat))
 		{
-			ft_print_error("Map error: invalid row found.\n");
-			ft_struct_free(map_data);
-			return (NULL);
+			ft_free_2d_char_array(m_in, m_dat->nbr_line + 1);
+			ft_struct_free_map(m_dat);
+			return (0);
 		}
-		map_data->current_line++;
+		m_dat->current_line++;
 	}
-	map_data->map[map_data->current_line] = NULL;
-	map_data->current_line = 0;
-	ft_free_2d_char_array(map_input);
-	return (map_data);
+	ft_free_2d_char_array(m_in, m_dat->nbr_line + 1);
+	return (1);
 }

@@ -12,27 +12,29 @@
 
 #include "../../../includes/lib.h"
 
-t_map	*ft_struct_initialize_solutions(t_map *m_dat)
+int	ft_struct_initialize_solutions(t_map *m_dat)
 {
 	unsigned int	i;
 
-	m_dat->sols = malloc(sizeof(int *) * (m_dat->nbr_line * m_dat->nbr_column));
+	m_dat->sols = malloc(sizeof(int *) * (m_dat->nbr_line));
 	if (!m_dat->sols)
-		ft_print_error("Error: allocating memory to solutions\n");
+	{
+		ft_struct_free_map(m_dat);
+		return (0);
+	}
 	else
 	{
 		i = 0;
-		while (i < m_dat->nbr_column)
+		while (i < m_dat->nbr_line)
 		{
 			m_dat->sols[i] = malloc(sizeof(int) * m_dat->nbr_column);
 			if (!m_dat->sols[i])
 			{
-				ft_print_error("Error: allocating memory to solutions rows.\n");
 				ft_struct_free(m_dat);
-				return (NULL);
+				return (0);
 			}
 			i++;
 		}
 	}
-	return (m_dat);
+	return (1);
 }

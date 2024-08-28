@@ -12,8 +12,16 @@
 
 #include "../../includes/lib.h"
 
-void	ft_free_2d_char_array(char **arr)
+void	ft_free_2d_char_array(char **arr, int nbr_row)
 {
+	int	i;
+
+	i = 0;
+	while (i < nbr_row)
+	{
+		free(arr[i]);
+		i++;
+	}
 	free(arr);
 }
 

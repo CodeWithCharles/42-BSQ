@@ -12,29 +12,28 @@
 
 #include "../../includes/lib.h"
 
-int	ft_validate_header(char *infos)
+int	ft_validate_header(char *inf)
 {
-	int	len;
+	int	s;
 	int	i;
 
-	len = ft_strlen(infos);
-	if (len < 4)
-		return (0);
-	i = -1;
-	while (++i < len)
+	s = ft_strlen(inf);
+	if (!(s < 4))
 	{
-		if (!(infos[i] >= ' ' && infos[i] <= '~')
-			|| (i < len - 3 && !(infos[i] >= '0' && infos[i] <= '9')))
+		i = -1;
+		while (++i < s)
 		{
-			ft_print_error("Map error : Invalid header datas.\n");
-			return (0);
+			if (!(inf[i] >= ' ' && inf[i] <= '~')
+				|| (i < s - 3 && !(inf[i] >= '0' && inf[i] <= '9')))
+			{
+				ft_print_error("map error\n");
+				return (0);
+			}
 		}
+		if (!(inf[s - 3] == inf[s - 2]
+				|| inf[s - 3] == inf[s - 1] || inf[s - 2] == inf[s - 1]))
+			return (1);
 	}
-	if (infos[len - 3] == infos[len - 2]
-		|| infos[len - 3] == infos[len - 1] || infos[len - 2] == infos[len - 1])
-	{
-		ft_print_error("Map error : Char duplication in header row.\n");
-		return (0);
-	}
-	return (1);
+	ft_print_error("map error\n");
+	return (0);
 }

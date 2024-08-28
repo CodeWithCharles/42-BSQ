@@ -12,20 +12,26 @@
 
 #include "../../includes/lib.h"
 
-int	*ft_parse_header_values(char *infos, int len)
+int	*ft_parse_header_values(char **map)
 {
 	int	*result;
+	int	len;
 
-	if (!(ft_validate_header(infos)))
+	if (!map[0] || !map[1])
+	{
+		ft_print_error("map error\n");
+		return (NULL);
+	}
+	len = ft_strlen(map[0]);
+	if (!(ft_validate_header(map[0])))
 		return (NULL);
 	result = malloc(4 * sizeof(int));
 	if (!result)
 		return (NULL);
-	result[1] = infos[len - 3] - '0';
-	result[2] = infos[len - 2] - '0';
-	result[3] = infos[len - 1] - '0';
-	infos[len - 3] = '\0';
-	result[0] = atoi(infos);
-	free(infos);
+	result[1] = map[0][len - 3] - '0';
+	result[2] = map[0][len - 2] - '0';
+	result[3] = map[0][len - 1] - '0';
+	map[0][len - 3] = '\0';
+	result[0] = atoi(map[0]);
 	return (result);
 }
