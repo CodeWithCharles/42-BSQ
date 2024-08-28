@@ -15,28 +15,27 @@
 int	*ft_parse_header_values(char **map)
 {
 	int	*result;
-	int	len;
 
 	if (!map[0] || !map[1])
 	{
 		ft_print_error("map error\n");
 		return (NULL);
 	}
-	len = ft_strlen(map[0]);
 	if (!(ft_validate_header(map[0])))
 		return (NULL);
-	if (atoi(map[0]) < 1)
-	{
-		ft_print_error("map error\n");
-		return (NULL);
-	}
 	result = malloc(4 * sizeof(int));
 	if (!result)
 		return (NULL);
-	result[1] = map[0][len - 3] - '0';
-	result[2] = map[0][len - 2] - '0';
-	result[3] = map[0][len - 1] - '0';
-	map[0][len - 3] = '\0';
+	result[1] = map[0][ft_strlen(map[0]) - 3] - '0';
+	result[2] = map[0][ft_strlen(map[0]) - 2] - '0';
+	result[3] = map[0][ft_strlen(map[0]) - 1] - '0';
+	map[0][ft_strlen(map[0]) - 3] = '\0';
 	result[0] = atoi(map[0]);
+	if (result[0] < 1)
+	{
+		free(result);
+		ft_print_error("map error\n");
+		return (NULL);
+	}
 	return (result);
 }
