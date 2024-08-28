@@ -25,6 +25,11 @@ int	*ft_parse_header_values(char **map)
 	len = ft_strlen(map[0]);
 	if (!(ft_validate_header(map[0])))
 		return (NULL);
+	if (atoi(map[0]) < 1)
+	{
+		ft_print_error("map error\n");
+		return (NULL);
+	}
 	result = malloc(4 * sizeof(int));
 	if (!result)
 		return (NULL);
