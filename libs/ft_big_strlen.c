@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_big_strlen.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 01:09:07 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:40:34 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 01:10:38 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 01:10:38 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib.h"
+#include "../includes/lib.h"
 
-int	main(int argc, char **argv)
+size_t	ft_big_strlen(char *str)
 {
-	t_map	map_data;
-	int		i;
+	size_t	i;
 
-	if (argc < 2)
-		ft_init_solving(NULL, &map_data);
-	else
-	{
-		i = 1;
-		while (argv[i])
-		{
-			ft_init_solving(argv[i++], &map_data);
-		}
-	}
-	return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

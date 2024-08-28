@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 01:09:07 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:40:34 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 00:58:59 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 15:46:35 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib.h"
+#include "../includes/lib.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(char *src, int from_idx, int to_idx)
 {
-	t_map	map_data;
+	char	*dest;
 	int		i;
 
-	if (argc < 2)
-		ft_init_solving(NULL, &map_data);
-	else
+	i = 0;
+	dest = malloc((to_idx - from_idx + 1) * sizeof(char));
+	while (i < to_idx - from_idx)
 	{
-		i = 1;
-		while (argv[i])
-		{
-			ft_init_solving(argv[i++], &map_data);
-		}
+		dest[i] = src[i + from_idx];
+		i++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }

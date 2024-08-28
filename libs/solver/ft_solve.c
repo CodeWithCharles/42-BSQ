@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 01:09:07 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:40:34 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 21:09:45 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 21:09:45 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib.h"
+#include "../../includes/lib.h"
 
-int	main(int argc, char **argv)
+void	ft_solve(t_map *m_dat)
 {
-	t_map	map_data;
-	int		i;
-
-	if (argc < 2)
-		ft_init_solving(NULL, &map_data);
-	else
-	{
-		i = 1;
-		while (argv[i])
-		{
-			ft_init_solving(argv[i++], &map_data);
-		}
-	}
-	return (0);
+	ft_retrieve_areas(m_dat);
+	ft_convert_map_chars(m_dat);
+	ft_display_solved_map(m_dat);
 }

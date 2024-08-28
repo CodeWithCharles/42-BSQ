@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_struct_free_solutions.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 01:09:07 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:40:34 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 17:06:30 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 20:22:35 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib.h"
+#include "../../../includes/lib.h"
 
-int	main(int argc, char **argv)
+void	ft_struct_free_solutions(t_map *map_data)
 {
-	t_map	map_data;
-	int		i;
+	unsigned int	i;
 
-	if (argc < 2)
-		ft_init_solving(NULL, &map_data);
-	else
-	{
-		i = 1;
-		while (argv[i])
-		{
-			ft_init_solving(argv[i++], &map_data);
-		}
-	}
-	return (0);
+	i = 0;
+	while (i < map_data->nbr_line)
+		free(map_data->sols[i++]);
+	free(map_data->sols);
 }

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_display_solved_map.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 01:09:07 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:40:34 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/27 22:10:26 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/27 22:10:26 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib.h"
+#include "../../includes/lib.h"
 
-int	main(int argc, char **argv)
+void	ft_display_solved_map(t_map *m_dat)
 {
-	t_map	map_data;
-	int		i;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (argc < 2)
-		ft_init_solving(NULL, &map_data);
-	else
+	i = 0;
+	while (i < m_dat->nbr_line)
 	{
-		i = 1;
-		while (argv[i])
+		j = 0;
+		while (j < m_dat->nbr_column)
 		{
-			ft_init_solving(argv[i++], &map_data);
+			write(1, &(m_dat->map[i][j]), 1);
+			j++;
 		}
+		write(1, "\n", 1);
+		i++;
 	}
-	return (0);
 }

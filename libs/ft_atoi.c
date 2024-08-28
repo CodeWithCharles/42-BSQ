@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 01:09:07 by cpoulain          #+#    #+#             */
-/*   Updated: 2024/08/27 17:40:34 by cpoulain         ###   ########.fr       */
+/*   Created: 2024/08/26 18:45:00 by cpoulain          #+#    #+#             */
+/*   Updated: 2024/08/26 21:44:58 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib.h"
+#include "../includes/lib.h"
 
-int	main(int argc, char **argv)
+int	ft_atoi(char *str)
 {
-	t_map	map_data;
-	int		i;
+	int	sign;
+	int	ans;
+	int	i;
 
-	if (argc < 2)
-		ft_init_solving(NULL, &map_data);
-	else
+	sign = 1;
+	ans = 0;
+	i = 0;
+	while (ft_char_is_space(str[i]))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		i = 1;
-		while (argv[i])
-		{
-			ft_init_solving(argv[i++], &map_data);
-		}
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		ans = ans * 10 + (str[i] - '0');
+		i++;
+	}
+	return (sign * ans);
 }
