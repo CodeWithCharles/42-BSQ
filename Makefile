@@ -1,5 +1,5 @@
 COMPILER = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./includes -g
+CFLAGS = -Wall -Wextra -Werror -I ./includes
 
 SOURCES = $(wildcard ./libs/*.c) \
 			$(wildcard ./libs/**/*.c) \
