@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/lib.h"
 
 int	ft_open_file_if_needed(char *filename, int *f_opened)
