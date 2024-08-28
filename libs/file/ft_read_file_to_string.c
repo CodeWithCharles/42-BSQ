@@ -43,8 +43,9 @@ char	*ft_finalize_read(char *content, size_t t_size, int f_opened, int fd)
 	return (content);
 }
 
-char	*ft_read_file_to_string(char *filename, int fd)
+char	*ft_read_file_to_string(char *filename)
 {
+	int		fd;
 	char	*content;
 	size_t	t_size;
 	size_t	allocated_size;

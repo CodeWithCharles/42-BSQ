@@ -70,7 +70,7 @@ int				ft_validate_row(char *row, t_map *map_data);
 char			*ft_expand_buffer(char *content, size_t *c_size);
 char			*ft_read_content(int fd, char *content, size_t *r_size,
 					size_t *c_size);
-char			*ft_read_file_to_string(char *filename, int fd);
+char			*ft_read_file_to_string(char *filename);
 //Solver functions
 void			ft_init_solving(char *file, t_map *map_data);
 void			ft_retrieve_areas(t_map *map_data);

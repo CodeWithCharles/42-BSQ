@@ -20,7 +20,7 @@ void	ft_init_solving(char *file, t_map *map_data)
 	int		nbr_line;
 
 	res = 0;
-	file_content = ft_read_file_to_string(file, 0);
+	file_content = ft_read_file_to_string(file);
 	if (file_content)
 	{
 		map = malloc((ft_strlen(file_content) + 1) * sizeof(char *));
